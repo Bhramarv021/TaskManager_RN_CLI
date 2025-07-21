@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Alert, SafeAreaView, Text, View } from "react-native";
 import { AppScreens } from "../utils/constants";
 import { Button, TextInput } from "react-native-paper";
+import { Appbar } from 'react-native-paper';
 
-
-const CreateTask = ({createNewTask}) => {
+const CreateTask = ({createNewTask, setCurrentScreen}) => {
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
     const handleSubmit = () => {
@@ -19,7 +19,13 @@ const CreateTask = ({createNewTask}) => {
     };
 
     return (
-        <SafeAreaView>
+        <View>
+            <Appbar style={[{height: 50, top: -5, backgroundColor:'red'}]}>
+                <Appbar.BackAction onPress={() => {setCurrentScreen(AppScreens.HomeScreen)}} />
+                <Appbar.Content title="Add Task" />
+                {/* <Appbar.Action icon="calendar" onPress={() => {}} />
+                <Appbar.Action icon="magnify" onPress={() => {}} /> */}
+            </Appbar>
             <View style={[{backgroundColor: 'blue'}]}>
                 <TextInput 
                     style={[{backgroundColor: 'orange', paddingHorizontal: 5, marginVertical: 10}]} 
@@ -38,7 +44,7 @@ const CreateTask = ({createNewTask}) => {
                 />
                 <Button onPress={handleSubmit}>Save Task</Button>
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 

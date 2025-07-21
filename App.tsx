@@ -1,18 +1,17 @@
 import { SafeAreaView, useColorScheme, View, StatusBar} from 'react-native';
 import AppManager from './src/manager/AppManager';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
-  // const insets = useSafeAreaInsets();
 
   return (
-    <SafeAreaView>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {/* <View style={[{backgroundColor: 'grey'}]}> */}
-        {/* <AddTasks /> */}
+      <SafeAreaProvider>
+        <SafeAreaView>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <AppManager />
-      {/* </View> */}
-    </SafeAreaView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 

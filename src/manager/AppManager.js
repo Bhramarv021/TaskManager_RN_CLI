@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import { AppScreens, Dummy_Tasks } from "../utils/constants";
 import HomeScreen from "../screens/HomeScreen";
 import CreateTask from "../screens/CreateTask";
@@ -28,6 +28,8 @@ const AppManager = () => {
     }
     
     return (
+        // <SafeAreaProvider>
+        <SafeAreaView>
         <View>
             {currentScreen === AppScreens.AddTaskScreen ? 
                 <CreateTask createNewTask={createNewTask} setCurrentScreen={setCurrentScreen} />
@@ -40,6 +42,7 @@ const AppManager = () => {
                 />
             }
         </View>
+        </SafeAreaView>
     )
 }
 
